@@ -1,4 +1,4 @@
-// Устанавливаем линтер
+// Устанавливаем eslint
 npm install eslint --save-dev
 npx eslint --init;
 :::
@@ -12,7 +12,7 @@ Which style guide do you want to follow? · airbnb
 What format do you want your config file to be in? · JavaScript
 Would you like to install them now with npm? · No / Yes
 
-// Устанавливаем претир
+// Устанавливаем prettier
 // https://prettier.io/docs/en/install.html
 npm install --save-dev --save-exact prettier;
 // интегрируем с линтером
