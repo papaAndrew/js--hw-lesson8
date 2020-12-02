@@ -21,4 +21,24 @@ export function printTableMultBy7() {
   }
 }
 
-// export function calcAvgOfOdds() {}
+/* *Запросить у пользователя ввод числа N. Вывести в
+консоль среднее арифметическое всех нечётных
+чисел от 1 до N.
+*/
+export function calcAvgOfOdds() {
+  const n = +prompt("Введите число: ", 0);
+
+  let res = 0;
+    let j = 0;
+  for (let i = 1; i <= n; i += 1) {
+    if (i % 2 !== 0) {
+      res += i;
+      j += 1;
+    }
+  }
+  if (j === 0) {
+    console.log(res);
+  } else {
+    console.log(res / j);
+  }
+}
