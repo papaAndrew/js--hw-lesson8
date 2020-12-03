@@ -1,4 +1,4 @@
-import createUser from "./script4";
+import { createUser, createAdmin } from "./script4";
 /*
 Создайте объект user, содержащий поле name со
 значением ‘John’.
@@ -13,11 +13,9 @@ import createUser from "./script4";
 */
 
 describe("test function which create and setup object {user}", () => {
-  //  const consoleSpy = jest.spyOn(console, "log");
-  const funcPropmpt = window.prompt;
-
+  const funcPrompt = window.prompt;
   afterAll(() => {
-    window.prompt = funcPropmpt;
+    window.prompt = funcPrompt;
   });
 
   describe("create object 'user' and manipulate with him", () => {
@@ -34,5 +32,21 @@ describe("test function which create and setup object {user}", () => {
         expect(user.age).toEqual(+num);
       });
     });
+  });
+});
+
+describe("test function which clone object 'user' to 'admin' and manipulate him", () => {
+  const consoleSpy = jest.spyOn(console, "log");
+  /*
+  const funcPropmpt = window.prompt;
+  afterAll(() => {
+    window.prompt = funcPrompt;
+  });
+*/
+  it("tests function createAdmin which clone object 'user' to 'admin' where admin.role ='admin' and does destructuring admin into vars", () => {
+    window.prompt = jest.fn(() => "30");
+    const admin = createAdmin();
+    expect(admin.role).toEqual("admin");
+    expect(consoleSpy).toBeCalledWith("John", 30, "admin");
   });
 });

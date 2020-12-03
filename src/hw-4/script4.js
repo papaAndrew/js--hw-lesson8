@@ -12,11 +12,22 @@
 должны совпадать с названиями полей.
 */
 
-export default function createUser() {
+export function createUser() {
   const user = { name: "John" };
 
   const num = +prompt("Введите число:");
   user.age = num;
 
   return user;
+}
+
+export function createAdmin() {
+  const user = createUser();
+  const admin = {role: "admin", ...user};
+
+  const { name, age, role } = admin;
+
+  console.log(name, age, role);
+
+  return admin;
 }
