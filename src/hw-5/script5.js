@@ -26,18 +26,18 @@ export function createArray() {
  * вдвое больше элемента исходного массива с таким же индексом.
  * (a[1] = 3, b[1] = 6, где a — исходный массив, b — новый массив).
  */
-export function createArrayByTemplate(arr) {
-  return arr.map((item) => 2 * item);
+export function createArrayByTemplate() {
+  return createArray().map((item) => 2 * item);
 }
 
 /** 3.*Найдите и выведите в консоль наибольший и
  * наименьший элементы исходного массива.
  */
-export function printExtremum(arr) {
+export function printExtremum() {
   let minVal = 0;
   let maxVal = 0;
 
-  arr.forEach((item) => {
+  createArray().forEach((item) => {
     if (item < minVal) {
       minVal = item;
     }

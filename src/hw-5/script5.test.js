@@ -1,15 +1,19 @@
 import { createArray, createArrayByTemplate, printExtremum } from "./script5";
 
 describe("test functions creates an array and does some operations with it", () => {
-  let arr;
-
   it("claims that function print to console a value 45", () => {
     /* Создайте массив целых чисел из 10 элементов.
     1.Выведите в консоль сумму всех элементов массива.
     */
     const consoleSpy = jest.spyOn(console, "log");
-    arr = createArray();
+    createArray();
     expect(consoleSpy).toBeCalledWith(45);
+  });
+
+  it("claims that function returns modified array based on result of createArray()", () => {
+    const template = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18];
+    const arr = createArrayByTemplate();
+    expect(arr).toEqual(template);
   });
 
   it("claims that function print to console values: 0, 18", () => {
@@ -22,8 +26,9 @@ describe("test functions creates an array and does some operations with it", () 
     наименьший элементы исходного массива.
     */
     const consoleSpy = jest.spyOn(console, "log");
-    // const consoleSpy = jest.spyOn(console, "log");
-    printExtremum(createArrayByTemplate(arr));
-    expect(consoleSpy).toBeCalledWith(0, 18);
+
+    printExtremum();
+    expect(consoleSpy).toBeCalledWith(0, 9);
+    // expect(consoleSpy.mock.calls[el[0]]).toEqual(el[1]);
   });
 });
