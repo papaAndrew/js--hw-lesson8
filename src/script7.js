@@ -17,8 +17,9 @@ $ static
  */
 export function inputInput() {
   const input = document.querySelector("#input1");
-  // console.log("value = " + input.value);
+  // console.log(input.value);
   document.querySelector("#button1").hidden = input.value === "";
+  // console.log(document.querySelector("#button1").hidden);
 }
 
 /** 2.При клике на кнопку добавляется новый параграф,
@@ -41,7 +42,7 @@ export function buttonClick() {
 /** На странице должны быть три текстовых параграфа [, поле ввода и кнопка].
  *
  * @param
- *   div {HTMLElement}
+ *   div {HTMLDivElement}
  */
 export function addContent(div) {
   for (let i = 1; i <= 3; i += 1) {
@@ -53,7 +54,7 @@ export function addContent(div) {
 
 /** На странице должны быть [три текстовых параграфа,] поле ввода и кнопка.
  * @param
- *   div {HTMLElement}
+ *   div {HTMLDivElement}
  */
 export function addForm(div) {
   const input = document.createElement("input");
@@ -68,6 +69,5 @@ export function addForm(div) {
   button.addEventListener("click", buttonClick);
   div.appendChild(button);
 
-  // console.log(input);
   inputInput();
 }
