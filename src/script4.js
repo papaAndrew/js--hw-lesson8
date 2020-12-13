@@ -23,7 +23,7 @@ export function createUser() {
 
 export function createAdmin() {
   const user = createUser();
-  const admin = {role: "admin", ...user};
+  const admin = { role: "admin", ...user };
 
   const { name, age, role } = admin;
 
