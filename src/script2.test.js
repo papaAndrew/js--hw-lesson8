@@ -1,4 +1,4 @@
-import { printMaxOfCouple, printMonth, isCircleInSquare } from "./script3-1";
+import { printMaxOfCouple, printMonth, isCircleInSquare } from "./script2";
 
 describe("test functions how they works", () => {
   it("do output into console.log max of (221, 256)", () => {
