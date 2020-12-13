@@ -1,4 +1,4 @@
-import promptUserData from "./script1";
+import promptUserData from "./script10";
 /*
 import promptUserEmail from "./script1";
 import promptUserPhone from "./script1";
