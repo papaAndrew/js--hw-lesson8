@@ -29,7 +29,7 @@ export function calcAvgOfOdds() {
   const n = +prompt("Введите число: ", 0);
 
   let res = 0;
-    let j = 0;
+  let j = 0;
   for (let i = 1; i <= n; i += 1) {
     if (i % 2 !== 0) {
       res += i;
