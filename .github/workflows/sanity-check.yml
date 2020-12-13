@@ -15,6 +15,6 @@ jobs:
       - name: Lint check
         run: |
           npm run lint
-      - name: Lint check
+      - name: Jest test jest
         run: |
           npm run test

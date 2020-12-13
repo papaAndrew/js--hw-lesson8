@@ -46,7 +46,7 @@
       "prettier --write",
       "eslint --cache --fix"
     ],
-    "*.{css,md}": "prettier --write"
+    "*.{css,md,yml}": "prettier --write"
   },
   "dependencies": {
     "@types/jest": "^26.0.15"
