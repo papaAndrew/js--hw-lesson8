@@ -1,20 +1,24 @@
 import { printMaxOfCouple, printMonth, isCircleInSquare } from "./script2";
+/* Домашнее задание №2 «Условия»
+1.В переменных a и b хранятся числа. Вывести в
+консоль наибольшее из них.
+2.Запросить у пользователя ввод числа от 1 до 12.
+Вывести в консоль название месяца, соответствующее
+этому числу (1 — январь, 2 — февраль и т.д.).
+*В переменных circle и square хранятся площади круга
+и квадрата соответственно. Написать программу,
+которая определяет, поместится ли круг в квадрат.
+*/
 
 describe("test functions how they works", () => {
   it("do output into console.log max of (221, 256)", () => {
     const consoleSpy = jest.spyOn(console, "log");
     printMaxOfCouple();
     expect(consoleSpy).toBeCalledWith(256);
+    consoleSpy.mockRestore();
   });
 
   describe("do output into console.log month's name user input a number of", () => {
-    const consoleSpy = jest.spyOn(console, "log");
-    const funcPropmpt = window.prompt;
-
-    afterAll(() => {
-      window.prompt = funcPropmpt;
-    });
-
     [
       ["0", "undefined"],
       ["1", "январь"],
@@ -32,9 +36,12 @@ describe("test functions how they works", () => {
       ["13", "undefined"],
     ].forEach((el) => {
       it(`check whether the value ${el[0]} is number of month ${el[1]}`, () => {
-        window.prompt = jest.fn(() => el[0]);
+        jest.spyOn(global.window, "prompt").mockImplementation(() => el[0]);
+        const consoleSpy = jest.spyOn(console, "log");
+
         printMonth();
         expect(consoleSpy).toBeCalledWith(el[1]);
+        consoleSpy.mockRestore();
       });
     });
   });

@@ -11,5 +11,8 @@ module.exports = {
   },
   rules: {
     "no-loop-func": "off",
+    "no-console": "off",
+    "no-alert": "off",
+    "import/extensions": "off",
   },
 };

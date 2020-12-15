@@ -1,4 +1,8 @@
 import printToConsole from "./script1";
+/* 1.В переменных a и b хранятся числа. Написать
+программу, которая выводит в консоль произведение
+и сумму этих чисел.
+*/
 
 describe("test function printToConsole", () => {
   it("is a function", () => {

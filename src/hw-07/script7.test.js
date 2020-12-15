@@ -73,9 +73,6 @@ describe("addForm", () => {
   });
 
   describe("checks button click adds new p. If count of p comes more than 5, first p must be deleted", () => {
-    /* для выполнения этого теста необходимо отключить в eslint rule "no-loop-func"
-     */
-
     beforeAll(() => {
       addForm(divForm);
       input = divForm.querySelector("input");

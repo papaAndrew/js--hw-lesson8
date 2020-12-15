@@ -1,23 +1,15 @@
 import promptUserData from "./script10";
-/*
-import promptUserEmail from "./script1";
-import promptUserPhone from "./script1";
-*/
-
-describe("test functions to return formatted string", () => {
-  /*
-Определить с
+/* Домашнее задание №10
+«Регулярные выражения»
+Пользователь вводит текстовую строку. Определить с
 помощью регулярного выражения, является ли
 введённая строка:
 1.Датой.
 2.Адресом электронной почты.
 3.*Номером телефона.
 */
-  const funcPropmpt = window.prompt;
-  afterAll(() => {
-    window.prompt = funcPropmpt;
-  });
 
+describe("test functions to return formatted string", () => {
   describe("Test got prompted good value is according to expected format", () => {
     [
       ["2020-11-29", "DATE"],
@@ -49,7 +41,8 @@ describe("test functions to return formatted string", () => {
       // ?      ['8    927 123 8 123', 'PHONE'],
     ].forEach((el) => {
       it(`check whether the value ${el[0]} is ${el[1]}`, () => {
-        window.prompt = jest.fn(() => el[0]);
+        jest.spyOn(global.window, "prompt").mockImplementation(() => el[0]);
+
         expect(promptUserData()).toEqual(el[1]);
       });
     });
@@ -59,7 +52,6 @@ describe("test functions to return formatted string", () => {
     [
       ["", "DATE"],
       ["A020-11-29", "DATE"],
-      //      ['20020-11-29', 'DATE'],
       ["2020-13-29", "DATE"],
       ["2020-11-32", "DATE"],
       ["2020\\11\\30", "DATE"],
@@ -80,17 +72,11 @@ describe("test functions to return formatted string", () => {
       ["123456@ru.name.ру", "EMAIL"],
       ["A79261234567", "PHONE"],
       ["-79261234567", "PHONE"],
-      //      ['+792612345670000000', 'PHONE'],
     ].forEach((el) => {
       it(`check whether the value ${el[0]} is not ${el[1]}`, () => {
-        window.prompt = jest.fn(() => el[0]);
+        jest.spyOn(global.window, "prompt").mockImplementation(() => el[0]);
         expect(promptUserData()).not.toEqual(el[1]);
       });
     });
   });
-  /*
-  it("is a phone", () => {
-     expect('Вася').toMatch(/ася/);
-  });
-*/
 });

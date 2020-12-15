@@ -12,10 +12,6 @@ import { diff, isWord, pow } from "./script6";
 */
 
 describe("test functions", () => {
-  /** 1.Напишите функцию diff, которая получает в качестве
-  параметров 2 числа и возвращает разницу между
-  наибольшим и наименьшим.
-  */
   describe("returns defference between max and min of two args", () => {
     [
       [0, 0, 0],
@@ -36,13 +32,10 @@ describe("test functions", () => {
     });
   });
 
-  /** 2.Напишите функцию isWord, которая принимает на
-  вход текстовую строку. Функция возвращает true, если
-  строка состоит из одного слова и false, если из
-  нескольких.
-  */
   describe("function returns true if an argument contains only one word", () => {
     [
+      ["1", true],
+      ["1 2", false],
       ["one_word", true],
       ["two words", false],
       ["name@domain.ru", true],
@@ -56,9 +49,6 @@ describe("test functions", () => {
     });
   });
 
-  /** *Напишите функцию pow(a, x), которая вернёт
-  значение числа a, возведённого в степень x.
-  */
   describe("function returns result of math power operation", () => {
     [
       [-1, 2, 1],

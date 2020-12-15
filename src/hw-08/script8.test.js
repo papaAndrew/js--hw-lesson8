@@ -8,18 +8,13 @@ import { printWeekDay, printTodayMinutes, whoIsYanger } from "./script8";
  * Написать программу, которая определяет более молодого пользователя.
  *
  */
+let consoleSpy;
+afterEach(() => {
+  consoleSpy.mockRestore();
+});
+
 describe("manipulations with dates", () => {
-  /** 1.Запросите у пользователя дату в формате ДД.ММ.ГГГГ.
-   * Напишите программу, выводящую день недели по введённой дате.
-   */
   describe("print week day for prompted date value into console", () => {
-    const consoleSpy = jest.spyOn(console, "log");
-    const funcPropmpt = window.prompt;
-
-    afterAll(() => {
-      window.prompt = funcPropmpt;
-    });
-
     [
       ["07.12.2020", "понедельник"],
       ["08.12.2020", "вторник"],
@@ -31,30 +26,47 @@ describe("manipulations with dates", () => {
       ["04.01.2021", "понедельник"],
     ].forEach((item) => {
       it(`claims that weekday of ${item[0]} is ${item[1]}`, () => {
-        window.prompt = jest.fn(() => item[0]);
+        jest.spyOn(global.window, "prompt").mockImplementation(() => item[0]);
+        consoleSpy = jest.spyOn(console, "log");
+
         printWeekDay();
+
         expect(consoleSpy).toBeCalledWith(item[1]);
       });
     });
   });
 
-  /** 2.Написать программу, которая выводит в консоль количество минут,
-   * прошедшее с начала сегодняшнего дня.
-   */
   describe("print minutes from today's begining into console", () => {
-    const consoleSpy = jest.spyOn(console, "log");
-    const date = new Date();
-    const minutes = 60 * date.getHours() + date.getMinutes();
+    const RealDate = Date;
 
-    it(`claims now ${minutes} minutes passed from begining of today`, () => {
-      printTodayMinutes();
-      expect(consoleSpy).toBeCalledWith(minutes);
+    afterAll(() => {
+      global.Date = RealDate;
+    });
+
+    [
+      [0, 0, 0],
+      [0, 1, 1],
+      [1, 0, 60],
+      [10, 30, 630],
+      [23, 59, 1439],
+    ].forEach((item) => {
+      const [hours, minutes, result] = item;
+      it(`claims that ${result} minutes passed from 00:00 to ${hours}:${minutes}`, () => {
+        consoleSpy = jest.spyOn(console, "log");
+        jest
+          .spyOn(global.Date.prototype, "getHours")
+          .mockImplementation(() => hours);
+        jest
+          .spyOn(global.Date.prototype, "getMinutes")
+          .mockImplementation(() => minutes);
+
+        printTodayMinutes();
+
+        expect(consoleSpy).toBeCalledWith(result);
+      });
     });
   });
 
-  /** 3.*В двух переменных хранятся даты рождения двух пользователей в формате ДД.ММ.ГГГГ.
-   * Написать программу, которая определяет более молодого пользователя.
-   */
   describe("calculates yangest of two users using their known birthdates", () => {
     [
       ["31.12.1999", "01.01.2000", "01.01.2000", "second yanger"],

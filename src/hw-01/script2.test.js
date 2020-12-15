@@ -1,18 +1,10 @@
 import printConcatLength from "./script2";
-
-describe("test function printConcatLength", () => {
-  /*
-  let outputData = "";
-  const  storeLog = inputs => (outputData += inputs);
-  test("console log Hello World", () => {
-    console["log"] = jest.fn(storeLog);
-
-    printConcatLength("a", "b");
-
-    expect(outputData).toBe("a");
-  })
+/* 2.В двух переменных хранятся строки символов.
+Написать программу, которая выведет в консоль
+суммарное количество символов в обоих строках.
 */
 
+describe("test function printConcatLength", () => {
   it("do output into console.log with two strings", () => {
     const s1 = "Hello";
     const s2 = "World!";

@@ -6,8 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint": "prettier --check . && eslint .",
-    "lint:fix": "prettier --write . && eslint . --fix",
-    "build": "webpack --mode production"
+    "lint:fix": "prettier --write . && eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -33,8 +32,7 @@
     "jest": "^26.6.3",
     "lint-staged": "^10.5.2",
     "prettier": "2.2.1",
-    "webpack": "^5.9.0",
-    "webpack-cli": "^4.2.0"
+    "@types/jest": "^26.0.15"
   },
   "husky": {
     "hooks": {
@@ -48,7 +46,5 @@
     ],
     "*.{css,md,yml}": "prettier --write"
   },
-  "dependencies": {
-    "@types/jest": "^26.0.15"
-  }
+  "dependencies": {}
 }
